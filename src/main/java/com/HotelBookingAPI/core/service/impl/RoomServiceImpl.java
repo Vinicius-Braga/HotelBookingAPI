@@ -49,7 +49,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public RoomEntity getRoomsById(UUID roomId) {
+    public RoomEntity getRoomById(UUID roomId) {
         return roomRepository.findById(roomId).orElseThrow(RoomNotFoundException::new);
     }
 

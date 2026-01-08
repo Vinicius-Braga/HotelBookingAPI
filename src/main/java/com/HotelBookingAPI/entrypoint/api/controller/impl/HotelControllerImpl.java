@@ -13,7 +13,11 @@ import java.util.UUID;
 @RestController
 public class HotelControllerImpl implements HotelController {
 
-    private HotelService hotelService;
+    private final HotelService hotelService;
+
+    public HotelControllerImpl(HotelService hotelService) {
+        this.hotelService = hotelService;
+    }
 
     @Override
     public ResponseEntity<List<HotelResponse>> getAllHotels() {
@@ -46,12 +50,12 @@ public class HotelControllerImpl implements HotelController {
     @Override
     public ResponseEntity<String> createHotel(HotelRequest request) {
         hotelService.createHotel(request);
-        return ResponseEntity.ok("Hotel created sucessfully");
+        return ResponseEntity.ok("Hotel created successfully");
     }
 
     @Override
     public ResponseEntity<String> updateHotel(UUID hotelId, HotelRequest request) {
         hotelService.updateHotel(hotelId, request);
-        return ResponseEntity.ok("Hotel updated sucessfully");
+        return ResponseEntity.ok("Hotel updated successfully");
     }
 }

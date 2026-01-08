@@ -1,7 +1,7 @@
 package com.HotelBookingAPI.entrypoint.api.controller;
 
-import com.HotelBookingAPI.entrypoint.api.dto.request.HotelRequest;
-import com.HotelBookingAPI.entrypoint.api.dto.response.HotelResponse;
+import com.HotelBookingAPI.entrypoint.api.dto.request.RoomRequest;
+import com.HotelBookingAPI.entrypoint.api.dto.response.RoomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,47 +20,46 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.List;
 import java.util.UUID;
 
-@RequestMapping("hotel")
-public interface HotelController {
+@RequestMapping("/room")
+public interface RoomController {
 
-
-    @Operation(tags = "hotel")
+    @Operation(tags = "room")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrived hotels."),
-            @ApiResponse(responseCode = "404", description = "HotelS not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved rooms."),
+            @ApiResponse(responseCode = "404", description = "room not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Unable to process.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    ResponseEntity<List<HotelResponse>> getAllHotels();
+    ResponseEntity<List<RoomResponse>> getAllRooms();
 
-    @Operation(tags = "hotel")
+    @Operation(tags = "room")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrived hotel."),
-            @ApiResponse(responseCode = "404", description = "Hotel not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved room."),
+            @ApiResponse(responseCode = "404", description = "Room not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Unable to process.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{hotelId}")
-    ResponseEntity<HotelResponse> getHotelById(@PathVariable UUID hotelId);
+    @GetMapping("/{roomId}")
+    ResponseEntity<RoomResponse> getRoomById(@PathVariable UUID roomId);
 
-    @Operation(tags = "hotel")
+    @Operation(tags = "room")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully created hotel."),
+            @ApiResponse(responseCode = "200", description = "Successfully created room."),
             @ApiResponse(responseCode = "500", description = "Unable to process.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    ResponseEntity<String> createHotel(@RequestBody HotelRequest request);
+    ResponseEntity<String> createRoom(@RequestBody RoomRequest request);
 
-    @Operation(tags = "hotel")
+    @Operation(tags = "room")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully updated hotel."),
-            @ApiResponse(responseCode = "404", description = "Hotel not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
+            @ApiResponse(responseCode = "200", description = "Successfully updated room."),
+            @ApiResponse(responseCode = "404", description = "Room not found.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Unable to process.", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/{hotelId}")
-    ResponseEntity<String> updateHotel(@PathVariable UUID hotelId,
-                                        @RequestBody HotelRequest request);
+    @PostMapping("/{roomId}")
+    ResponseEntity<String> updateRoom(@PathVariable UUID roomId,
+                                       @RequestBody RoomRequest request);
 }

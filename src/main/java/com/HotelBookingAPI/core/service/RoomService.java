@@ -15,5 +15,5 @@ public interface RoomService {
 
     List<RoomEntity> getAllRooms();
 
-    RoomEntity getRoomsById(UUID roomId);
+    RoomEntity getRoomById(UUID roomId);
 }
