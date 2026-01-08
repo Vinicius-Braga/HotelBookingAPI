@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "client")
 @AllArgsConstructor
+@NoArgsConstructor
 public class ClientEntity {
 
     @Id
@@ -29,8 +31,4 @@ public class ClientEntity {
     private String email;
 
     private String document;
-
-    public ClientEntity() {
-
-    }
 }

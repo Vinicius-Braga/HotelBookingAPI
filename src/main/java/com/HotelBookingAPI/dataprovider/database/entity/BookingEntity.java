@@ -1,22 +1,28 @@
 package com.HotelBookingAPI.dataprovider.database.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
+@Builder
 @Getter
 @Setter
 @Entity
 @Table(name = "booking")
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookingEntity {
 
     @Id
@@ -29,7 +35,9 @@ public class BookingEntity {
     @ManyToOne
     private ClientEntity client;
 
-    private LocalDateTime check_in;
+    @Column(name = "check_in")
+    private LocalDate checkIn;
 
-    private LocalDateTime check_out;
+    @Column(name = "check_out")
+    private LocalDate checkOut;
 }
