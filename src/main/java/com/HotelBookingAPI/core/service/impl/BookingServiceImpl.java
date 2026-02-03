@@ -9,10 +9,12 @@ import com.HotelBookingAPI.dataprovider.database.repository.BookingRepository;
 import com.HotelBookingAPI.dataprovider.database.repository.ClientRepository;
 import com.HotelBookingAPI.dataprovider.database.repository.RoomRepository;
 import com.HotelBookingAPI.entrypoint.api.dto.request.BookingRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;

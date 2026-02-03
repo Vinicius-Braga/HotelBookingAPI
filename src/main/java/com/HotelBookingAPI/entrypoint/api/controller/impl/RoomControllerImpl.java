@@ -26,7 +26,7 @@ public class RoomControllerImpl implements RoomController {
         var response = rooms.stream()
                 .map(room -> RoomResponse.builder()
                         .id(room.getId())
-                        .Hotel(room.getHotel().getId())
+                        .hotelId(room.getHotel().getId())
                         .number(room.getNumber())
                         .price(room.getPrice())
                         .status(room.getStatus())
@@ -43,7 +43,7 @@ public class RoomControllerImpl implements RoomController {
 
         var response = RoomResponse.builder()
                 .id(room.getId())
-                .Hotel(room.getHotel().getId())
+                .hotelId(room.getHotel().getId())
                 .number(room.getNumber())
                 .price(room.getPrice())
                 .status(room.getStatus())
