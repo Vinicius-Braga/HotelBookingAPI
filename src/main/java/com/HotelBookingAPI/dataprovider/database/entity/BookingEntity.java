@@ -33,7 +33,7 @@ public class BookingEntity {
     private RoomEntity room;
 
     @ManyToOne
-    private ClientEntity client;
+    private UserEntity user;
 
     @Column(name = "check_in")
     private LocalDate checkIn;

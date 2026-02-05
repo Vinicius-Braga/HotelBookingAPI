@@ -1,6 +1,6 @@
 package com.HotelBookingAPI.entrypoint.api.dto.request;
 
-public record ClientRequest (
+public record UserRequest(
     String name,
     String email,
     String document

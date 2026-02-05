@@ -8,7 +8,7 @@ import java.util.UUID;
 @Builder
 public record BookingResponse(
         UUID id,
-        UUID clientId,
+        UUID userId,
         UUID roomId,
         LocalDate checkIn,
         LocalDate checkOut

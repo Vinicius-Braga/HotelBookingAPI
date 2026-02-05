@@ -1,11 +1,9 @@
 package com.HotelBookingAPI.core.service.impl;
 
-import com.HotelBookingAPI.core.exception.ClientNotFoundException;
 import com.HotelBookingAPI.core.exception.HotelNotFoundException;
 import com.HotelBookingAPI.core.service.HotelService;
 import com.HotelBookingAPI.dataprovider.database.entity.HotelEntity;
 import com.HotelBookingAPI.dataprovider.database.repository.HotelRepository;
-import com.HotelBookingAPI.entrypoint.api.dto.request.ClientRequest;
 import com.HotelBookingAPI.entrypoint.api.dto.request.HotelRequest;
 import org.springframework.stereotype.Service;
 

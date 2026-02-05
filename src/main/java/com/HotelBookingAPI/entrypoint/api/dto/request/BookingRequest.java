@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public record BookingRequest(
-        UUID clientId,
+        UUID userId,
         UUID roomId,
         LocalDate checkIn,
         LocalDate checkOut

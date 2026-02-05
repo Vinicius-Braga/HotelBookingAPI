@@ -26,7 +26,7 @@ public class BookingControllerImpl implements BookingController {
         var response = bookings.stream().map(
                 booking -> BookingResponse.builder()
                         .id(booking.getId())
-                        .clientId(booking.getClient().getId())
+                        .userId(booking.getUser().getId())
                         .roomId(booking.getRoom().getId())
                         .checkIn(booking.getCheckIn())
                         .checkOut(booking.getCheckOut())
@@ -42,7 +42,7 @@ public class BookingControllerImpl implements BookingController {
 
         var response =  BookingResponse.builder()
                         .id(bookings.getId())
-                        .clientId(bookings.getClient().getId())
+                        .userId(bookings.getUser().getId())
                         .roomId(bookings.getRoom().getId())
                         .checkIn(bookings.getCheckIn())
                         .checkOut(bookings.getCheckOut())

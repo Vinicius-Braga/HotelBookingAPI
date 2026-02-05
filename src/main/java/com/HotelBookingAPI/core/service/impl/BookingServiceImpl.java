@@ -1,12 +1,12 @@
 package com.HotelBookingAPI.core.service.impl;
 
 import com.HotelBookingAPI.core.exception.BookingNotFoundException;
-import com.HotelBookingAPI.core.exception.ClientNotFoundException;
 import com.HotelBookingAPI.core.exception.RoomNotFoundException;
+import com.HotelBookingAPI.core.exception.UserNotFoundException;
 import com.HotelBookingAPI.core.service.BookingService;
 import com.HotelBookingAPI.dataprovider.database.entity.BookingEntity;
 import com.HotelBookingAPI.dataprovider.database.repository.BookingRepository;
-import com.HotelBookingAPI.dataprovider.database.repository.ClientRepository;
+import com.HotelBookingAPI.dataprovider.database.repository.UserRepository;
 import com.HotelBookingAPI.dataprovider.database.repository.RoomRepository;
 import com.HotelBookingAPI.entrypoint.api.dto.request.BookingRequest;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final RoomRepository roomRepository;
-    private final ClientRepository clientRepository;
+    private final UserRepository userRepository;
 
     public BookingServiceImpl(BookingRepository bookingRepository,
                               RoomRepository roomRepository,
-                              ClientRepository clientRepository) {
+                              UserRepository userRepository) {
         this.bookingRepository = bookingRepository;
         this.roomRepository = roomRepository;
-        this.clientRepository = clientRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -38,11 +38,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void updateBooking(UUID bookingId, BookingRequest bookingRequest) {
         var booking = bookingRepository.findById(bookingId).orElseThrow(BookingNotFoundException::new);
-        var client = clientRepository.findById(bookingRequest.clientId()).orElseThrow(ClientNotFoundException::new);
+        var user = userRepository.findById(bookingRequest.userId()).orElseThrow(UserNotFoundException::new);
         var room = roomRepository.findById(bookingRequest.roomId()).orElseThrow(RoomNotFoundException::new);
 
         booking.setRoom(room);
-        booking.setClient(client);
+        booking.setUser(user);
         booking.setCheckIn(bookingRequest.checkIn());
         booking.setCheckOut(bookingRequest.checkOut());
 
@@ -61,11 +61,11 @@ public class BookingServiceImpl implements BookingService {
 
     private BookingEntity toEntity(BookingRequest booking) {
         var room = roomRepository.findById(booking.roomId()).orElseThrow(RoomNotFoundException::new);
-        var client =  clientRepository.findById(booking.clientId()).orElseThrow(ClientNotFoundException::new);
+        var user =  userRepository.findById(booking.userId()).orElseThrow(UserNotFoundException::new);
 
         return BookingEntity.builder()
                 .room(room)
-                .client(client)
+                .user(user)
                 .checkIn(booking.checkIn())
                 .checkOut(booking.checkOut())
                 .build();
